@@ -1,0 +1,9 @@
+.columns {
+    border: 2px solid blue;
+    margin: 2px;
+}
+
+.column {
+    border: 2px solid red;
+    margin: 2px;
+}
