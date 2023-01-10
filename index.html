@@ -1,82 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-        <link rel="stylesheet" href=".\Assets\css\style.css" />
-        <title>Sports all around</title>
-    </head>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href=".\Assets\css\style.css" />
+    <title>Sports all around</title>
+</head>
 
 <Body>
-    <Header>
-        <H1>Sports All Around</H1>
-        <Nav>
-            <ul>
-                <li><a href="#Live Scores">Live Scores</a></li>
-                <li><a href="#Betting Odds">Betting Odds</a></li>
-                <li><a href="#Contact info">Contact Us</a></li>
-            </ul>
-        </Nav>
+    <Header class="columns">
+
+        <H1 class="column is-half is-offset-one-quarter">Sports All Around</H1>
+
+
+
+
+
     </Header>
-<!--Figure element, is the background image thats going to be a Photo-->
-    <Figure>
-        <img src="" alt="Background image">
-    </Figure>
 
-    <Main>
-        <section id="Betting Odds">
-            <h2>Football</h2>
+
+    <nav class="columns">
+        <img class="column is-one-quarter" />
+        <!--Todo put logo-->
         
+        <section class="column" id="Betting Odds">
+
+            <h2>Football</h2>
+
         </section>
 
-        <section>
-            <h2>Baseball</h2> 
+        <section class="column">
+            <h2>Baseball</h2>
 
         </section>
 
-        <section>
+        <section class="column">
             <h2>Basketball</h2>
 
         </section>
 
-        <section>
+        <section class="column">
             <h2>Hockey</h2>
 
         </section>
-
-        <section>
-            <h2>Soccer</h2>
-
-        </section>
+        <textarea class="column is-one-quarter">have a dropdown menu that will populate with search history</textarea><!--the search bar portion-->
 
 
-        
-        
-    </Main>
 
-    <Aside>
-        <article id="Live Scores">
-         
-        </article>            
-    </Aside>
 
-    <Footer>
-        <section id="Contact info">
-            <h3>Contact Info</h3>
-            <ul>
-                <li><a href=""></a></li>
-                <li><a href=""></a></li>
-                <li><a href=""></a></li>
-            </ul>
-                <p>
-                    1-555-555-5555
-                </p>                                                
-    </Footer>
+    </nav>
+<div class="columns">
+    <!--to put current date upon page load-->
+    <p class=" column is-2 is-offset-5">date</p>
+</div>
+    <div class="columns">
+        <div class="column is-one-fifth">
+            <h2>favorties</h2>
+            <p>populated saved favorties using the "select" HTML element and local storage</p>
+        </div>
+        <p class="column">where scores populate</p>
+    </div>
 
-<script src=".\Assets\javascript\script.js"></script>
+
+    <script src=".\Assets\javascript\script.js"></script>
 
 </Body>
 
-</html>  
+</html>
