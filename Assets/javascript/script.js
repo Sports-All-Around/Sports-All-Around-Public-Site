@@ -42,7 +42,7 @@
     }
   });
 });
-
+/*
 const settings = {
 	"async": true,
 	"crossDomain": true,
@@ -75,3 +75,34 @@ $.ajax(settings).done(function (response) {
 
 
 
+*/
+
+//Related to the modal input and saving to local storage
+var addToFavorites = $('#addToFavorites')
+
+function populateFavorites (event){
+    event.preventDefault();
+    var formFavorites = $('#favorites').val();
+
+    if (!formFavorites) {
+        console.log('no favorites inputted');
+        return;
+    };
+    //set favortie to local storage
+    localStorage.setItem("savedFavorites", JSON.stringify(formFavorites));
+
+    
+   var selection = $('#selectFavorites');
+   var selectionArray = JSON.parse(localStorage.getItem('savedFavorites'))||[];
+   if (selectionArray === 0){
+    var sF = document.createElement('option');
+    sF.textContent = "No Favorites"
+   } else {
+    console.log(selectionArray);
+    selection.append('<option>' + selectionArray + '</option>');
+   }
+}
+
+addToFavorites.on('click', populateFavorites);
+
+populateFavorites();
