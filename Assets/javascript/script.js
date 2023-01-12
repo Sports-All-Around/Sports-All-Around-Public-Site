@@ -42,3 +42,36 @@
     }
   });
 });
+
+const settings = {
+	"async": true,
+	"crossDomain": true,
+	"url": "https://odds.p.rapidapi.com/v4/sports?all=true",
+	"method": "GET",
+	"headers": {
+		"X-RapidAPI-Key": "9e34c8fe8emsh1d50cc56bf1e2a3p177c2cjsna07b45eca78b",
+		"X-RapidAPI-Host": "odds.p.rapidapi.com"
+	}
+};
+
+$.ajax(settings).done(function (response) {
+	console.log(response);
+});
+
+const settings = {
+	"async": true,
+	"crossDomain": true,
+	"url": "https://flashlive-sports.p.rapidapi.com/v1/search/multi-search?query=mess&locale=en_INT",
+	"method": "GET",
+	"headers": {
+		"X-RapidAPI-Key": "9e34c8fe8emsh1d50cc56bf1e2a3p177c2cjsna07b45eca78b",
+		"X-RapidAPI-Host": "flashlive-sports.p.rapidapi.com"
+	}
+};
+
+$.ajax(settings).done(function (response) {
+	console.log(response);
+});
+
+
+
