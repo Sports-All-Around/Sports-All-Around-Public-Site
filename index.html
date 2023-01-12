@@ -24,7 +24,7 @@
     <nav class="columns">
         <img class="column is-one-quarter" />
         <!--Todo put logo-->
-        
+
         <section class="column" id="Betting Odds">
 
             <h2>Football</h2>
@@ -45,25 +45,44 @@
             <h2>Hockey</h2>
 
         </section>
-        <textarea class="column is-one-quarter">have a dropdown menu that will populate with search history</textarea><!--the search bar portion-->
+        <textarea
+            class="column is-one-quarter">have a dropdown menu that will populate with search history</textarea><!--the search bar portion-->
 
 
 
 
     </nav>
-<div class="columns">
-    <!--to put current date upon page load-->
-    <p class=" column is-2 is-offset-5">date</p>
-</div>
+    <div class="columns">
+        <!--to put current date upon page load-->
+        <p class=" column is-2 is-offset-5">date</p>
+    </div>
     <div class="columns">
         <div class="column is-one-fifth">
+            <button class="js-modal-trigger" data-target="modal-js-example">
+                Open JS example modal
+            </button>
+            <!--Modal-->
+            <div id="modal-js-example" class="modal">
+                <div class="modal-background"></div>
+
+                <div class="modal-content">
+                    <div class="box">
+                        <p>Modal JS example</p>
+                        <!-- Your content -->
+                    </div>
+                </div>
+
+
+                <button class="modal-close is-large" aria-label="close"></button>
+
+            </div>
             <h2>favorties</h2>
             <p>populated saved favorties using the "select" HTML element and local storage</p>
         </div>
         <p class="column">where scores populate</p>
     </div>
 
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js'></script>
     <script src=".\Assets\javascript\script.js"></script>
 
 </Body>
