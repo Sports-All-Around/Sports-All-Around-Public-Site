@@ -42,8 +42,9 @@
     }
   });
 });
-/*
-const settings = {
+
+//For live betting line odds
+const liveOddsSettings = {
 	"async": true,
 	"crossDomain": true,
 	"url": "https://odds.p.rapidapi.com/v4/sports?all=true",
@@ -54,11 +55,12 @@ const settings = {
 	}
 };
 
-$.ajax(settings).done(function (response) {
+$.ajax(liveOddsSettings).done(function (response) {
 	console.log(response);
 });
 
-const settings = {
+//For live Scores
+const liveScoresSettings = {
 	"async": true,
 	"crossDomain": true,
 	"url": "https://flashlive-sports.p.rapidapi.com/v1/search/multi-search?query=mess&locale=en_INT",
@@ -69,30 +71,45 @@ const settings = {
 	}
 };
 
-$.ajax(settings).done(function (response) {
+$.ajax(liveScoresSettings).done(function (response) {
 	console.log(response);
 });
 
 
 
-*/
+
 
 //Related to the modal input and saving to local storage
 var addToFavorites = $('#addToFavorites')
 
-function populateFavorites (event){
+function addFavorites (event){
     event.preventDefault();
     var formFavorites = $('#favorites').val();
 
     if (!formFavorites) {
         console.log('no favorites inputted');
         return;
-    };
+    } else {
+        let favoritesString = localStorage.getItem('savedFavorites');
+        var favoritesArray = JSON.parse(favoritesString);
+        if (favoritesArray === null){
+            favoritesArray = []
+        }
+        favoritesArray.push(formFavorites);
+    }
     //set favortie to local storage
-    localStorage.setItem("savedFavorites", JSON.stringify(formFavorites));
-
+    localStorage.setItem("savedFavorites", JSON.stringify(favoritesArray));
+    populateFavorites();
     
-   var selection = $('#selectFavorites');
+   
+}
+
+addToFavorites.on('click', addFavorites);
+
+populateFavorites();
+
+function populateFavorites(event){
+    var selection = $('#selectFavorites');
    var selectionArray = JSON.parse(localStorage.getItem('savedFavorites'))||[];
    if (selectionArray === 0){
     var sF = document.createElement('option');
@@ -101,8 +118,4 @@ function populateFavorites (event){
     console.log(selectionArray);
     selection.append('<option>' + selectionArray + '</option>');
    }
-}
-
-addToFavorites.on('click', populateFavorites);
-
-populateFavorites();
+};
