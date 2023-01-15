@@ -119,3 +119,45 @@ function populateFavorites(event){
     selection.append('<option>' + selectionArray + '</option>');
    }
 };
+
+//button to close modal and submit to storage
+var setDefault = $('#saveclose');
+
+
+function setUserDefault (event) {
+    event.preventDefault();
+
+    //Selects checked defaults
+    var checkedEl = $('input:checked')
+    var selected = []
+
+    //loops through each checked options to store in array
+    $.each(checkedEl, function () {
+        selected.push($(this).val());
+        console.log(selected)
+    })
+}
+
+setDefault.on('click', setUserDefault);
+
+
+
+//for loops to populate scores and odds
+function createScoresCards() {
+    var container = $('#Hockey-Scores');
+    for (var i =0; i < data.score.length; i++){
+        var title = document.createElement(h3);
+        title.textcontent = data.sport_title;
+        document.$('#Hockey-Scores').appendchild(title);
+        var awayTeam = document.createElement(p);
+        awayTeam.textcontent = data.score[1].name + ": " + data.score[1].score;
+        document.$('#Hockey-Scores').appendchild(awayTeam);
+        var homeTeam = document.createElement(p);
+        awayTeam.textcontent = data.score[0].name + ": " + data.score[0].score;
+        document.$('#Hockey-Scores').appendchild(homeTeam);
+        return
+
+    }
+}
+
+createScoresCards();
