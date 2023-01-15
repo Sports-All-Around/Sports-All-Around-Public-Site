@@ -141,25 +141,31 @@ setDefault.on('click', setUserDefault);
 
 
 
-//for loops to populate scores and odds
-function createScoresCards() {
-    var container = $('#Hockey-Scores');
-    for (var i =0; i < data.score.length; i++){
-        var title = document.createElement(h3);
-        title.textcontent = data.sport_title;
-        document.$('#Hockey-Scores').appendchild(title);
-        var awayTeam = document.createElement(p);
-        awayTeam.textcontent = data.score[1].name + ": " + data.score[1].score;
-        document.$('#Hockey-Scores').appendchild(awayTeam);
-        var homeTeam = document.createElement(p);
-        awayTeam.textcontent = data.score[0].name + ": " + data.score[0].score;
-        document.$('#Hockey-Scores').appendchild(homeTeam);
-        return
+//for loops to populate scores
+function createScoresCards(data, containerId) {
+    var container = $(`#${containerId}`);
+    
+    for (var i =0; i < data.length; i++){
+      
+        if (data[i].scores === null){
+          continue
+        }
+        var title = document.createElement('h3');
+      title.textContent = data[i].sport_title;
+        container.append(title);
+        var awayTeam = document.createElement('p');
+        awayTeam.textContent = data[i].scores[1].name + ": " + data[i].scores[1].score;
+        container.append(awayTeam);
+        var homeTeam = document.createElement('p');
+        homeTeam.textContent = data[i].scores[0].name + ": " + data[i].scores[0].score;
+        container.append(homeTeam);
+        
 
     }
 }
 
-createScoresCards();
+
+
 
 function getApiResponses(sportId) {
     var scoreResponse;
@@ -191,6 +197,7 @@ function getApiResponses(sportId) {
         oddsResponse = response;
         console.log(oddsResponse);
         console.log(scoreResponse);
+        createScoresCards(scoreResponse, 'Hockey-Scores')
         
         for (var i = 0; i < scoreResponse.length; i++){
             var count = 0;
