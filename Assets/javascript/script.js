@@ -42,7 +42,7 @@
     }
   });
 });
-
+/*
 //For live betting line odds
 const liveOddsSettings = {
 	"async": true,
@@ -56,7 +56,7 @@ const liveOddsSettings = {
 };
 
 $.ajax(liveOddsSettings).done(function (response) {
-	console.log(response);
+//	console.log(response);
 });
 
 //For live Scores
@@ -72,10 +72,10 @@ const liveScoresSettings = {
 };
 
 $.ajax(liveScoresSettings).done(function (response) {
-	console.log(response);
+//	console.log(response);
 });
 
-
+*/
 
 
 
@@ -175,7 +175,7 @@ function createNHLOddsScoreCards (data, containerId) {
 
   for (var i = 0; i < data.length; i++){
     var awayTeam = document.createElement('p');
-    awayTeam.textContent = data[i].bookmakers[0].markets[1].outcomes[0].name + ": " + data[i].bookmakers[0].markets[1].outcomes[0].point;
+    awayTeam.textContent = data[i].bookmakers[0].markets[0].outcomes[1].name + ": " + data[i].bookmakers[0].markets[1].outcomes[0].point;
     container.append(awayTeam);
     var homeTeam = document.createElement('p');
     homeTeam.textContent = data[i].bookmakers[0].markets[1].outcomes[1].name + ": " + data[i].bookmakers[0].markets[1].outcomes[1].point;
@@ -214,8 +214,8 @@ function getNHLApiResponses(sportId) {
         oddsNHLResponse = response;
         console.log(oddsNHLResponse);
         console.log(scoreNHLResponse);
-        createNHLScoresCards(scoreNHLResponse, 'Hockey-Scores');
-        createNHLOddsScoreCards (oddsNHLResponse, 'Hockey-Odds');
+        createNHLScoresCards(scoreNHLResponse, 'NHL-Scores');
+        createNHLOddsScoreCards(oddsNHLResponse, 'NHL-Odds');
         
         for (var i = 0; i < scoreNHLResponse.length; i++){
             var count = 0;
@@ -269,10 +269,10 @@ var container = $(`#${containerId}`);
 
 for (var i = 0; i < data.length; i++){
   var awayTeam = document.createElement('p');
-  awayTeam.textContent = data[i].bookmakers[0].markets[0].outcomes[0].name + ": " + data[i].bookmakers[0].markets[0].outcomes[0].point;
+  awayTeam.textContent = data[i].bookmakers[0].markets[1].outcomes[0].name + ": " + data[i].bookmakers[0].markets[1].outcomes[0].point;
   container.append(awayTeam);
   var homeTeam = document.createElement('p');
-  homeTeam.textContent = data[i].bookmakers[0].markets[0].outcomes[1].name + ": " + data[i].bookmakers[0].markets[0].outcomes[1].point;
+  homeTeam.textContent = data[i].bookmakers[0].markets[1].outcomes[1].name + ": " + data[i].bookmakers[0].markets[1].outcomes[1].point;
 container.append(homeTeam);
 }
 }
@@ -308,8 +308,8 @@ function getNFLApiResponses(sportId) {
       oddsNFLResponse = response;
       console.log(oddsNFLResponse);
       console.log(scoreNFLResponse);
-      createNFLScoresCards(scoreNFLResponse, 'Hockey-Scores');
-      createNFLOddsScoreCards (oddsNFLResponse, 'Hockey-Odds');
+      createNFLScoresCards(scoreNFLResponse, 'NFL-Scores');
+      createNFLOddsScoreCards (oddsNFLResponse, 'NFL-Odds');
       
       for (var i = 0; i < scoreNFLResponse.length; i++){
           var count = 0;
@@ -330,3 +330,99 @@ function getNFLApiResponses(sportId) {
 }
 
 getNFLApiResponses('americanfootball_nfl');
+
+
+
+
+//for loops to populate scores
+function createNBAScoresCards(data, containerId) {
+  var container = $(`#${containerId}`);
+  
+  for (var i =0; i < data.length; i++){
+    
+      if (data[i].scores === null){
+        continue
+      }
+      var title = document.createElement('h3');
+    title.textContent = data[i].sport_title;
+      container.append(title);
+      var awayTeam = document.createElement('p');
+      awayTeam.textContent = data[i].scores[1].name + ": " + data[i].scores[1].score;
+      container.append(awayTeam);
+      var homeTeam = document.createElement('p');
+      homeTeam.textContent = data[i].scores[0].name + ": " + data[i].scores[0].score;
+      container.append(homeTeam);
+      
+
+  }
+}
+
+
+//For loops to populate odds
+
+function createNBAOddsScoreCards (data, containerId) {
+var container = $(`#${containerId}`);
+
+for (var i = 0; i < data.length; i++){
+  var awayTeam = document.createElement('p');
+  awayTeam.textContent = data[i].bookmakers[0].markets[1].outcomes[0].name + ": " + data[i].bookmakers[0].markets[1].outcomes[0].point;
+  container.append(awayTeam);
+  var homeTeam = document.createElement('p');
+  homeTeam.textContent = data[i].bookmakers[0].markets[1].outcomes[1].name + ": " + data[i].bookmakers[0].markets[1].outcomes[1].point;
+container.append(homeTeam);
+}
+}
+
+
+function getNBAApiResponses(sportId) {
+  var scoreNBAResponse;
+  var oddsNBAResponse;
+  const scores = {
+      "async": true,
+      "crossDomain": true,
+      "url": `https://odds.p.rapidapi.com/v4/sports/${sportId}/scores?daysFrom=2`,
+      "method": "GET",
+      "headers": {
+          "X-RapidAPI-Key": "9e34c8fe8emsh1d50cc56bf1e2a3p177c2cjsna07b45eca78b",
+          "X-RapidAPI-Host": "odds.p.rapidapi.com"
+      }
+  };
+
+  const odds = {
+      "async": true,
+      "crossDomain": true,
+      "url": `https://odds.p.rapidapi.com/v4/sports/${sportId}/odds?regions=us&oddsFormat=decimal&markets=h2h%2Cspreads&dateFormat=iso`,
+      "method": "GET",
+      "headers": {
+          "X-RapidAPI-Key": "9e34c8fe8emsh1d50cc56bf1e2a3p177c2cjsna07b45eca78b",
+          "X-RapidAPI-Host": "odds.p.rapidapi.com"
+      }
+  }
+  $.ajax(scores).done(function (response) {
+      scoreNBAResponse = response;
+  $.ajax(odds).done(function (response) {
+      oddsNBAResponse = response;
+      console.log(oddsNBAResponse);
+      console.log(scoreNBAResponse);
+      createNBAScoresCards(scoreNBAResponse, 'NBA-Scores');
+      createNBAOddsScoreCards (oddsNBAResponse, 'NBA-Odds');
+      
+      for (var i = 0; i < scoreNBAResponse.length; i++){
+          var count = 0;
+          for (var j = 0; j < oddsNBAResponse.length; j++) {
+              if (scoreNBAResponse[i] === oddsNBAResponse[j]) {
+                  count ++
+              }
+          }
+          return;
+      }
+      // for loop through scoreResponse
+          // inner for loop over the oddsResponse
+              // match scores and odds by using the id key / field
+              // when I find a matching odds, then write to the dom and add a card for the game that includes scores and odds and game data
+  });
+  });        
+
+}
+
+getNBAApiResponses('basketball_nba');
