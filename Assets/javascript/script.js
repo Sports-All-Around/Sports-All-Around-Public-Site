@@ -164,7 +164,18 @@ function createScoresCards(data, containerId) {
     }
 }
 
+function createOddsScoreCards (data, containerId) {
+  var container = $(`#${containerId}`);
 
+  for (var i = 0; i < data.length; i++){
+    var awayTeam = document.createElement('p');
+    awayTeam.textContent = data[i].bookmakers[0].markets[0].outcomes[0].name + ": " + data[i].bookmakers[0].markets[0].outcomes[0].point;
+    container.append(awayTeam);
+    var homeTeam = document.createElement('p');
+    homeTeam.textContent = data[i].bookmakers[0].markets[0].outcomes[1].name + ": " + data[i].bookmakers[0].markets[0].outcomes[1].point;
+container.append(homeTeam);
+  }
+}
 
 
 function getApiResponses(sportId) {
@@ -197,7 +208,8 @@ function getApiResponses(sportId) {
         oddsResponse = response;
         console.log(oddsResponse);
         console.log(scoreResponse);
-        createScoresCards(scoreResponse, 'Hockey-Scores')
+        createScoresCards(scoreResponse, 'Hockey-Scores');
+        createOddsScoreCards (oddsResponse, 'Hockey-Odds');
         
         for (var i = 0; i < scoreResponse.length; i++){
             var count = 0;
