@@ -132,9 +132,12 @@ function setUserDefault (event) {
 
     //loops through each checked options to store in array
     $.each(checkedEl, function () {
-        selected.push($(this).val());
-        console.log(selected)
-    })
+        selected.push($(this).attr("data-setting"));
+       
+    }
+    );
+     console.log(selected)
+     localStorage.setItem('userDefaults', JSON.stringify(selected));
 }
 
 setDefault.on('click', setUserDefault);
@@ -163,6 +166,9 @@ function createScoresCards(data, containerId) {
 
     }
 }
+
+
+//For loops to opulate odds
 
 function createOddsScoreCards (data, containerId) {
   var container = $(`#${containerId}`);
