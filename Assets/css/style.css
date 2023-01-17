@@ -7,3 +7,7 @@
     border: 2px solid red;
     margin: 2px;
 }
+
+#NFL-Scores, #NFL-Odds, #NHL-Scores, #NHL-Odds, #NBA-Scores, #NBA-Odds{
+    display: none;
+}
