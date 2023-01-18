@@ -145,8 +145,16 @@ function setUserDefault (event) {
 setDefault.on('click', setUserDefault);
 
 function showPreferances () {
-  var userDefaults = JSON.parse(localStorage.getItem('userDefaults'));
-  for (var i =0 ; i< userDefaults.length; i++){
+  var userDefaults = JSON.parse(localStorage.getItem('userDefaults'))||[];
+  if (userDefaults.length === 0){
+    $('#NFL-Scores').show();
+    $('#NHL-Scores').show();
+    $('#NBA-Scores').show();
+    $('#NFL-Odds').show();
+    $('#NHL-Odds').show();
+    $('#NBA-Odds').show();
+  } else {
+    for (var i =0 ; i< userDefaults.length; i++){
     console.log(userDefaults[i]);
     if (userDefaults[i] === 'NFL-Scores'){
       $('#NFL-Scores').show();
@@ -169,6 +177,8 @@ function showPreferances () {
       $('#NBA-Odds').show();
     } 
   }
+  }
+  
   
   console.log(userDefaults)
 }
