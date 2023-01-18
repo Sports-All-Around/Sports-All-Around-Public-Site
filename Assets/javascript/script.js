@@ -56,7 +56,7 @@ const liveOddsSettings = {
 };
 
 $.ajax(liveOddsSettings).done(function (response) {
-//	console.log(response);
+	console.log(response);
 });
 
 //For live Scores
@@ -72,10 +72,10 @@ const liveScoresSettings = {
 };
 
 $.ajax(liveScoresSettings).done(function (response) {
-//	console.log(response);
+	console.log(response);
 });
 
-*/
+
 
 
 
@@ -120,6 +120,7 @@ function populateFavorites(event){
    }
 };
 //button to close modal and submit to storage
+*/
 var setDefault = $('#saveclose');
 
 
@@ -138,11 +139,41 @@ function setUserDefault (event) {
     );
      console.log(selected)
      localStorage.setItem('userDefaults', JSON.stringify(selected));
+     window.location.reload();
 }
 
 setDefault.on('click', setUserDefault);
 
+function showPreferances () {
+  var userDefaults = JSON.parse(localStorage.getItem('userDefaults'));
+  for (var i =0 ; i< userDefaults.length; i++){
+    console.log(userDefaults[i]);
+    if (userDefaults[i] === 'NFL-Scores'){
+      $('#NFL-Scores').show();
+    } 
+    
+    if (userDefaults[i] === 'NHL-Scores'){
+      $('#NHL-Scores').show();
+    
+    }
+    if (userDefaults[i] === 'NFL-Odds'){
+      $('#NFL-Odds').show();
+    } 
+    if (userDefaults[i] === 'NHL-Odds'){
+      $('#NHL-Odds').show();
+    } 
+    if (userDefaults[i] === 'NBA-Scores'){
+      $('#NBA-Scores').show();
+    } 
+    if (userDefaults[i] === 'NBA-Odds'){
+      $('#NBA-Odds').show();
+    } 
+  }
+  
+  console.log(userDefaults)
+}
 
+showPreferances();
 
 //for loops to populate scores
 function createNHLScoresCards(data, containerId) {
@@ -425,4 +456,8 @@ function getNBAApiResponses(sportId) {
 
 }
 
-getNBAApiResponses('basketball_nba');
+setTimeout(() =>{
+  getNBAApiResponses('basketball_nba')
+}, 1000);
+;
+
