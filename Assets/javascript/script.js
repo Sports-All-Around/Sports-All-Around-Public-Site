@@ -145,8 +145,16 @@ function setUserDefault (event) {
 setDefault.on('click', setUserDefault);
 
 function showPreferances () {
-  var userDefaults = JSON.parse(localStorage.getItem('userDefaults'));
-  for (var i =0 ; i< userDefaults.length; i++){
+  var userDefaults = JSON.parse(localStorage.getItem('userDefaults'))||[];
+  if (userDefaults.length === 0){
+    $('#NFL-Scores').show();
+    $('#NHL-Scores').show();
+    $('#NBA-Scores').show();
+    $('#NFL-Odds').show();
+    $('#NHL-Odds').show();
+    $('#NBA-Odds').show();
+  } else {
+    for (var i =0 ; i< userDefaults.length; i++){
     console.log(userDefaults[i]);
     if (userDefaults[i] === 'NFL-Scores'){
       $('#NFL-Scores').show();
@@ -169,6 +177,8 @@ function showPreferances () {
       $('#NBA-Odds').show();
     } 
   }
+  }
+  
   
   console.log(userDefaults)
 }
@@ -206,7 +216,7 @@ function createNHLOddsScoreCards (data, containerId) {
 
   for (var i = 0; i < data.length; i++){
     var awayTeam = document.createElement('p');
-    awayTeam.textContent = data[i].bookmakers[0].markets[0].outcomes[1].name + ": " + data[i].bookmakers[0].markets[1].outcomes[0].point;
+    awayTeam.textContent = data[i].bookmakers[0].markets[1].outcomes[0].name + ": " + data[i].bookmakers[0].markets[1].outcomes[0].point;
     container.append(awayTeam);
     var homeTeam = document.createElement('p');
     homeTeam.textContent = data[i].bookmakers[0].markets[1].outcomes[1].name + ": " + data[i].bookmakers[0].markets[1].outcomes[1].point;
@@ -360,7 +370,7 @@ function getNFLApiResponses(sportId) {
 
 }
 
-getNFLApiResponses('americanfootball_nfl');
+//getNFLApiResponses('americanfootball_nfl');
 
 
 
@@ -461,3 +471,10 @@ setTimeout(() =>{
 }, 1000);
 ;
 
+//grab current date
+var now = dayjs().format('MMMM/DD/YYYY')
+
+var displayDate = $('#currentDay')
+
+//To display in the header
+displayDate.text(now);
