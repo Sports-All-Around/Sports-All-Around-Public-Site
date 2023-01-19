@@ -2,36 +2,25 @@
 
 ## Description
 
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
+We were wanting to me a site where it was easy to see the live scores at a given point as well as betting lines associated with each game.  This was so that bettor would be able to have an add-free experience and focus on the lines to make smart up to date decisions.  The site will pull data from the Live Odds API with separate requests for the score and the odds.  The site also has the ability for the user to be able to show with only scores, odd, or certain scores and odds.  While we did this we were able to learn more about using multiple APIS and parsing through the data so that would could certain data rather than all of the data.  We were also to get a better grasp on how to work as a team breaking down the various tasks of HTML, CSS, and JavaScript.  In addition we learned about version control and how it relates to Github and working on branches, not the main, using pull and push requests to actually update the main.
 
-
-- Developed this webiste to help sports betters and sports fanaticts get fast updates to live scores and odds to the game of there choosings as quick as possible.
-While doing that also used and put in two API's to help the web appliaction work as smooth as possible without any problems, with doing that worked as a team to breakdown certain parts of the 
-application such as HTML, CSS and Javascript. Learned how to use version control on github with a team and manage it to get there with no such problems.
-
-
-
-
-
+The following is a link to the website [Sports-All-Around site] (https://sports-all-around.github.io/Sports-All-Around-Public-Site/)
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+The following are some screenshots of the site in various aspects.
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
+![Screenshot of main site](./Assets/Images/Site-screen-shot.png)
 
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
+![Screenshot of setting user defaults](./Assets/Images/set-defaults-screenshot.png)
+
 
 ## Credits
 
-Github Repo: https://github.com/Sports-All-Around/Sports-All-Around-Public-Site
+Collaborators
 
+Christopher Newell: https://github.com/Arms-like-trees 
 
+Jonathon Emmert:https://github.com/JEmmert10 
 
-
-
-
-
-
+Rehan Jetpuri:https://github.com/RehanJet 
