@@ -1,13 +1,42 @@
 .columns {
-    border: 2px solid blue;
     margin: 2px;
 }
 
 .column {
-    border: 2px solid red;
     margin: 2px;
 }
 
 #NFL-Scores, #NFL-Odds, #NHL-Scores, #NHL-Odds, #NBA-Scores, #NBA-Odds{
+    border: 2px solid red;
     display: none;
+    border-radius: 30px;
+}
+#awesome {
+    font-size: 90px;
+    text-align: center;
+    font-family: fantasy;
+}
+html {
+    background-color: yellow;
+}
+#currentDay {
+    text-align: center;
+    background-color: white;
+    border-radius: 30px;
+    border: 2px solid rgb(11, 13, 11)
+    
+}
+#NBA-Scores, #NHL-Scores, #NFL-Scores {
+    background-color: lightblue;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+
+}
+#NBA-Odds, #NHL-Odds, #NFL-Odds {
+    background-color: lightpink;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+}
+#NBA-Scores h3, #NHL-Scores h3, #NFL-Scores h3 {
+    font-weight: bolder;
 }
