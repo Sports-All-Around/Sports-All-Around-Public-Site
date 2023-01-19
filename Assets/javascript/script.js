@@ -370,7 +370,7 @@ function getNFLApiResponses(sportId) {
 
 }
 
-//getNFLApiResponses('americanfootball_nfl');
+getNFLApiResponses('americanfootball_nfl');
 
 
 
