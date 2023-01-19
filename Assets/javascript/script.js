@@ -216,7 +216,7 @@ function createNHLOddsScoreCards (data, containerId) {
 
   for (var i = 0; i < data.length; i++){
     var awayTeam = document.createElement('p');
-    awayTeam.textContent = data[i].bookmakers[0].markets[0].outcomes[1].name + ": " + data[i].bookmakers[0].markets[1].outcomes[0].point;
+    awayTeam.textContent = data[i].bookmakers[0].markets[1].outcomes[0].name + ": " + data[i].bookmakers[0].markets[1].outcomes[0].point;
     container.append(awayTeam);
     var homeTeam = document.createElement('p');
     homeTeam.textContent = data[i].bookmakers[0].markets[1].outcomes[1].name + ": " + data[i].bookmakers[0].markets[1].outcomes[1].point;
@@ -370,7 +370,7 @@ function getNFLApiResponses(sportId) {
 
 }
 
-getNFLApiResponses('americanfootball_nfl');
+//getNFLApiResponses('americanfootball_nfl');
 
 
 
@@ -471,3 +471,10 @@ setTimeout(() =>{
 }, 1000);
 ;
 
+//grab current date
+var now = dayjs().format('MMMM/DD/YYYY')
+
+var displayDate = $('#currentDay')
+
+//To display in the header
+displayDate.text(now);
