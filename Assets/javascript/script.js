@@ -215,6 +215,9 @@ function createNHLOddsScoreCards (data, containerId) {
   var container = $(`#${containerId}`);
 
   for (var i = 0; i < data.length; i++){
+    if (!data[i]?.bookmakers[0]?.markets[1]?.outcomes){
+      continue
+    }
     var awayTeam = document.createElement('p');
     awayTeam.textContent = data[i].bookmakers[0].markets[1].outcomes[0].name + ": " + data[i].bookmakers[0].markets[1].outcomes[0].point;
     container.append(awayTeam);
@@ -309,6 +312,9 @@ function createNFLOddsScoreCards (data, containerId) {
 var container = $(`#${containerId}`);
 
 for (var i = 0; i < data.length; i++){
+  if (!data[i]?.bookmakers[0]?.markets[1]?.outcomes){
+    continue
+  }
   var awayTeam = document.createElement('p');
   awayTeam.textContent = data[i].bookmakers[0].markets[1].outcomes[0].name + ": " + data[i].bookmakers[0].markets[1].outcomes[0].point;
   container.append(awayTeam);
@@ -370,7 +376,7 @@ function getNFLApiResponses(sportId) {
 
 }
 
-//getNFLApiResponses('americanfootball_nfl');
+getNFLApiResponses('americanfootball_nfl');
 
 
 
@@ -405,6 +411,9 @@ function createNBAOddsScoreCards (data, containerId) {
 var container = $(`#${containerId}`);
 
 for (var i = 0; i < data.length; i++){
+  if (!data[i]?.bookmakers[0]?.markets[1]?.outcomes){
+    continue
+  }
   var awayTeam = document.createElement('p');
   awayTeam.textContent = data[i].bookmakers[0].markets[1].outcomes[0].name + ": " + data[i].bookmakers[0].markets[1].outcomes[0].point;
   container.append(awayTeam);
